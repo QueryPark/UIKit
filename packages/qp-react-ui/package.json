@@ -29,9 +29,7 @@
     "test": "jest --coverage",
     "verify": "nps clean && npm test -- -u && npm run lint",
     "precommit": "npm run verify",
-    "preversion": "npm run verify && npm run deploy",
-    "version": "git add -A",
-    "postversion": "git push && git push --tags && npm publish"
+    "preversion": "npm run verify && npm run deploy"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -76,5 +74,6 @@
   "peerDependencies": {
     "react": "^15.3.0 || ^16.0.0",
     "react-dom": "^15.3.0 || ^16.0.0"
-  }
+  },
+  "gitHead": "f29c4042630a8c72e487414722175f9e2ce49109"
 }
