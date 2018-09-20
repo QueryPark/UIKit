@@ -1,0 +1,28 @@
+if: tag IS blank
+
+language: node_js
+node_js:
+  - "10"
+  - "8"
+  - "6"
+
+env:
+  global:
+    - NO_UPDATE_NOTIFIER=1
+    - NODE_NO_WARNINGS=1
+
+matrix:
+  fast_finish: true
+
+cache:
+  directories:
+    - $HOME/.npm
+
+before_install:
+  - npm config set loglevel warn
+  - npm install --global npm@latest
+
+install: npm ci
+
+script:
+  - npm run ci
