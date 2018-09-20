@@ -1,13 +1,14 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { mount } from 'enzyme'
+import toJSON from 'enzyme-to-json'
 
 import Search from '../Search'
 
 test('initial snapshot test', () => {
-  const component = renderer.create(
+  const component = mount(
     <Search />
   )
 
-  let tree = component.toJSON()
+  let tree = toJSON(component)
   expect(tree).toMatchSnapshot()
 })
