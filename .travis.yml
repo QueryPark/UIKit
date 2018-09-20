@@ -1,5 +1,13 @@
 if: tag IS blank
 
+git:
+  depth: 3
+
+branches:
+  only:
+  - master
+  - /^v-.*$/
+
 language: node_js
 node_js:
   - "10"
@@ -21,8 +29,6 @@ cache:
 before_install:
   - npm config set loglevel warn
   - npm install --global npm@latest
-
-install: npm ci
 
 script:
   - npm run ci
