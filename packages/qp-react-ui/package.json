@@ -1,0 +1,80 @@
+{
+  "name": "qp-react-ui",
+  "version": "1.0.1-alpha.0",
+  "description": "Query Park UI Components for React",
+  "main": "lib/index.js",
+  "module": "dist/qp-react-ui.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QueryPark/UIKit.git"
+  },
+  "keywords": [],
+  "author": "Query Park Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QueryPark/UIKit/issues"
+  },
+  "homepage": "https://github.com/QueryPark/UIKit#readme",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "nps build",
+    "watch": "nps build.watch",
+    "lint": "eslint ./src ./docs",
+    "deploy": "cross-env NODE_ENV=production nps publish",
+    "start": "webpack-dev-server --progress",
+    "test": "jest --coverage",
+    "verify": "nps clean && npm test -- -u && npm run lint",
+    "precommit": "npm run verify",
+    "preversion": "npm run verify && npm run deploy",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-emotion": "^9.2.10",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.0.0",
+    "eslint": "^5.6.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
+    "lerna": "^3.4.0",
+    "nps": "^5.9.3",
+    "nps-utils": "^1.7.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-test-renderer": "^16.5.2",
+    "rollup": "^0.66.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "peerDependencies": {
+    "react": "^15.3.0 || ^16.0.0",
+    "react-dom": "^15.3.0 || ^16.0.0"
+  }
+}
