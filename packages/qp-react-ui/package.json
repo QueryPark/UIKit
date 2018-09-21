@@ -31,7 +31,7 @@
     "watch": "nps build.watch",
     "lint": "eslint ./src ./docs",
     "deploy": "cross-env NODE_ENV=production nps publish",
-    "start": "webpack-dev-server --progress",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "test": "jest --coverage",
     "verify": "nps clean && npm test -- -u && npm run lint",
     "precommit": "npm run verify",
@@ -76,6 +76,7 @@
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-uglify-es": "0.0.1",
+    "url-loader": "^1.1.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8"
@@ -83,5 +84,8 @@
   "peerDependencies": {
     "react": "^15.3.0 || ^16.0.0",
     "react-dom": "^15.3.0 || ^16.0.0"
+  },
+  "dependencies": {
+    "emotion": "^9.2.10"
   }
 }

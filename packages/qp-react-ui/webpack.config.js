@@ -2,8 +2,10 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-// const webpack = require('webpack');
+const webpack = require('webpack')
 require('dotenv').config()
+
+console.log(process.env)
 
 module.exports = {
   mode: 'development',
@@ -32,6 +34,17 @@ module.exports = {
             loader: 'babel-loader'
           }
         ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
@@ -46,6 +59,11 @@ module.exports = {
       inject: false,
       template: path.resolve(__dirname, 'docs/index.html')
     }),
-    new CopyWebpackPlugin(['favicon.ico'])
+    new CopyWebpackPlugin(['favicon.ico']),
+    new webpack.DefinePlugin({
+      API_KEY: process.env.NODE_ENV === 'development'
+        ? JSON.stringify(process.env.API_KEY)
+        : JSON.stringify('')
+    })
   ]
 }
