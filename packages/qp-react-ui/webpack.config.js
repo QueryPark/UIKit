@@ -11,7 +11,7 @@ module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'docs'),
   entry: {
-    index: './index.js'
+    index: ['@babel/polyfill', './index.js']
   },
   output: {
     path: path.resolve(__dirname, 'docs/dist'),

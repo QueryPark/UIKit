@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`initial snapshot test 1`] = `
-<Component>
-  <p>
-    qp component lib
-  </p>
-</Component>
-`;

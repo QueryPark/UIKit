@@ -11,15 +11,28 @@ const globals = {
   emotion: 'emotion',
   'prop-types': 'PropTypes',
   'react-dom': 'ReactDOM',
-  react: 'React'
+  react: 'React',
+  'react-select/lib/Async': 'AsyncSelect'
 }
 
-const external = Object.keys(globals)
+const external = id => {
+  if (globals.hasOwnProperty(id)) {
+    return true
+  }
+
+  if (/lodash/.test(id)) {
+    globals[id] = '_' + id.split('/').slice(-1)
+    console.log(`${id} -> ${globals[id]}`)
+    return true
+  }
+}
+
 const babelOptions = () => {
   let result = {
     babelrc: false,
     presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
     plugins: [
+      'lodash',
       'emotion',
       '@babel/plugin-proposal-object-rest-spread'
     ]
