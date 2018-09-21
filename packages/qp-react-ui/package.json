@@ -28,6 +28,7 @@
   ],
   "scripts": {
     "build": "nps build && bundlesize",
+    "build-docs": "nps build.docs",
     "watch": "nps build.watch",
     "lint": "eslint ./src ./docs",
     "deploy": "cross-env NODE_ENV=production nps publish",

@@ -5,8 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 require('dotenv').config()
 
-console.log(process.env)
-
 module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, 'docs'),
