@@ -50,14 +50,15 @@ const ChosenWell = ({ well }) => {
   const {
     subheader,
     govId,
-    surfaceLocation
+    surfaceLocation,
+    owner
   } = well
 
   const fieldOptions = {
     oLabel: { size: '12px' },
     oValue: { size: '20px' }
   }
-  const govIdOptions = merge({}, fieldOptions, { textAlign: 'right' })
+  const rightFieldOptions = merge({}, fieldOptions, { textAlign: 'right' })
 
   return (
     <div className={style}>
@@ -65,13 +66,19 @@ const ChosenWell = ({ well }) => {
         <Field label={subheader.label} value={subheader.value}
           options={fieldOptions} />
         <Field label={govId.label} value={govId.value}
-          options={govIdOptions}
+          options={rightFieldOptions}
         />
       </div>
       <div>
         <Field label={surfaceLocation.label} value={surfaceLocation.value}
           options={fieldOptions}
         />
+        <Field label={owner.label} value={owner.value}
+          options={rightFieldOptions}
+        />
+      </div>
+      <div>
+        <div /> { /* align pillbox rtl */ }
         <Pillbox attributes={well.attributes} />
       </div>
     </div>

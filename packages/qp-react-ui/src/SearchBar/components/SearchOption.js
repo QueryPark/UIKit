@@ -55,11 +55,12 @@ const SearchOption = ({
     primaryHeader,
     subheader,
     govId,
-    surfaceLocation
+    surfaceLocation,
+    owner
   } = data
 
   const primaryHeaderOptions = { oValue: { weight: 500 } }
-  const govIdOptions = { textAlign: 'right' }
+  const rightAlign = { textAlign: 'right' }
 
   return (
     <div ref={innerRef} {...innerProps} className={style}
@@ -70,12 +71,17 @@ const SearchOption = ({
           options={primaryHeaderOptions}
         />
         <Field label={govId.label} value={govId.value}
-          options={govIdOptions}
+          options={rightAlign}
         />
       </div>
       <div>
         <Field label={subheader.label} value={subheader.value} />
-        <Field label={surfaceLocation.label} value={surfaceLocation.value} />
+        <Field label={surfaceLocation.label} value={surfaceLocation.value}
+          options={rightAlign}
+        />
+      </div>
+      <div>
+        <Field label={owner.label} value={owner.value} />
         <Pillbox attributes={data.attributes} />
       </div>
     </div>

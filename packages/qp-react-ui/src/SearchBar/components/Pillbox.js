@@ -49,35 +49,6 @@ const pillbox = css`
   justify-content: flex-end;
 `
 
-const drillDirParse = (drillDir) => {
-  let drillDirCode
-  switch (drillDir.toLowerCase()) {
-    case 'hz':
-    case 'horz':
-    case 'horizontal':
-      drillDirCode = 'HZ'
-      break
-    case 'vt':
-    case 'vert':
-    case 'vertical':
-      drillDirCode = 'VT'
-      break
-    case 'dir':
-    case 'directional':
-      drillDirCode = 'DIR'
-      break
-    case 'slt':
-    case 'slant':
-      drillDirCode = 'SLT'
-      break
-    default:
-      drillDirCode = false
-      break
-  }
-
-  return drillDirCode
-}
-
 const mapAttributes = (attributes) => {
   const pills = []
   const {
@@ -99,9 +70,8 @@ const mapAttributes = (attributes) => {
     pills.push(regionPill)
   }
 
-  const drillDirCode = drillDirParse(drillDirection)
-  if (drillDirCode) {
-    pills.push(<Pill key={drillDirCode} options={PILL_OPTS[drillDirCode]}>{drillDirCode}</Pill>)
+  if (drillDirection) {
+    pills.push(<Pill key={drillDirection} options={PILL_OPTS[drillDirection]}>{drillDirection}</Pill>)
   }
 
   if (isLatest) {
