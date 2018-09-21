@@ -12,7 +12,8 @@ const globals = {
   'prop-types': 'PropTypes',
   'react-dom': 'ReactDOM',
   react: 'React',
-  'react-select/lib/Async': 'AsyncSelect'
+  'react-select/lib/Async': 'AsyncSelect',
+  '@babel/runtime/regenerator': '_regeneratorRuntime'
 }
 
 const external = id => {
@@ -30,11 +31,16 @@ const external = id => {
 const babelOptions = () => {
   let result = {
     babelrc: false,
+    externalHelpers: false,
+    runtimeHelpers: true,
     presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
     plugins: [
       'lodash',
       'emotion',
-      '@babel/plugin-proposal-object-rest-spread'
+      '@babel/plugin-proposal-object-rest-spread',
+      ['@babel/plugin-transform-runtime', { // for async await syntax
+        'helpers': false
+      }]
     ]
   }
   return result
