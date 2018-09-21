@@ -1,11 +1,11 @@
+/* global API_KEY */
+
 import React, { Component } from 'react'
 import { css } from 'emotion'
 
 import { Search } from 'qp-react-ui'
 
 import Logo from './assets/Logo.png'
-
-console.log(API_KEY)
 
 const style = css`
   & > header {
@@ -64,11 +64,18 @@ const style = css`
   }
 `
 
+console.log(API_KEY)
+
 class App extends Component {
   constructor () {
     super()
 
-    this.state = { API_KEY: '' }
+    // If in development, the API_KEY may be supplied from a .env file
+    // in qp-react-ui/.env
+    // API_KEY=API_KEY. If in production, API_KEY is set to ''
+
+    // This allows devs to skip copy pasting a key into the box every reload.
+    this.state = { API_KEY }
     this.updateKey = this.updateKey.bind(this)
   }
 
