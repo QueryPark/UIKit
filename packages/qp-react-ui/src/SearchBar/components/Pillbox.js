@@ -61,7 +61,10 @@ const mapAttributes = (attributes) => {
     let regionPill
     switch (region) {
       case 'AB':
-        regionPill = <Pill key='ab' options={PILL_OPTS[region]}>AB</Pill>
+      case 'BC':
+      case 'SK':
+      case 'MB':
+        regionPill = <Pill key={region} options={PILL_OPTS[region]}>{region}</Pill>
         break
       default:
         regionPill = <Pill key={region} options={PILL_OPTS.REG_DEF}>{region}</Pill>
