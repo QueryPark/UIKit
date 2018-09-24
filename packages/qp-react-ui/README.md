@@ -23,6 +23,9 @@ import React from 'react'
 import { Search } from 'qp-react-ui'
 
 const App = () => (
-  <Search API_KEY='' />
+  <Search
+    API_KEY='' // string
+    onWellSelect={(chosenWell) => { console.log(chosenWell) }}
+  />
 )
 ```
