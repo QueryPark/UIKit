@@ -32,7 +32,8 @@ class Search extends Component {
 
   render () {
     const {
-      API_KEY
+      API_KEY,
+      onWellSelect
     } = this.props
 
     const {
@@ -48,6 +49,7 @@ class Search extends Component {
         <Content>
           <SearchBar
             API_KEY={API_KEY}
+            onWellSelect={onWellSelect}
             updateHeader={this.updateState('header')}
             updateFooter={this.updateState('footer')}
           />
@@ -61,7 +63,8 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  API_KEY: PropTypes.string.isRequired
+  API_KEY: PropTypes.string.isRequired,
+  onWellSelect: PropTypes.func
 }
 
 export default Search

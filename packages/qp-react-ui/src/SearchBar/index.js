@@ -23,7 +23,7 @@ const createNewHeaders = (apiKey) => new Headers({
   'x-api-key': apiKey
 })
 
-class QPSearchBar extends Component {
+class SearchBar extends Component {
   constructor (props) {
     super(props)
 
@@ -67,6 +67,10 @@ class QPSearchBar extends Component {
       well: chosenWell,
       previousInput: this.state.inputValue
     })
+
+    if (typeof this.props.onWellSelect === 'function') {
+      this.props.onWellSelect(chosenWell)
+    }
   }
 
   async getWells (input) {
@@ -152,11 +156,12 @@ class QPSearchBar extends Component {
   }
 }
 
-QPSearchBar.propTypes = {
+SearchBar.propTypes = {
   API_KEY: PropTypes.string.isRequired,
+  onWellSelect: PropTypes.func,
 
   updateHeader: PropTypes.func.isRequired,
   updateFooter: PropTypes.func.isRequired
 }
 
-export default QPSearchBar
+export default SearchBar
