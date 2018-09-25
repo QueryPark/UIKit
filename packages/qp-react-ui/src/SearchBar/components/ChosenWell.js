@@ -13,7 +13,9 @@ import {
   chunk,
   map,
   sortBy,
-  filter
+  filter,
+  reduce,
+  each
 } from 'lodash/fp'
 
 import {
@@ -24,6 +26,7 @@ import {
 import Pillbox from './Pillbox'
 
 import { COLORS } from '../../theme'
+import expandObject from '../../util/expandObject'
 
 const style = css`
   display: flex;
@@ -159,6 +162,25 @@ const ChosenWellDetails = ({ well: { wellData } }) => {
     keys,
     filter(label => !skipLabels.test(label)),
     sortBy(label => label),
+    reduce((acc, label) => {
+      if (typeof wellData[label] === 'object') {
+        const props = expandObject(wellData[label], label)
+        const res = [...acc]
+        // add new prop to well data object &
+        // add new label to result
+        each(({ label, value }) => {
+          wellData[label] = value
+          res.push(label)
+        }, props)
+
+        // delete old label
+        delete wellData[label]
+
+        return res
+      } else {
+        return [...acc, label]
+      }
+    }, []),
     mapWithKeys((label, key) => (<Field
       key={key}
       label={startCase(label)}
