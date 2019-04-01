@@ -74,14 +74,13 @@ class SearchBar extends Component {
   }
 
   async getWells (input) {
-    const url = QP_URL_ROOT + 'suggest'
-    const data = { query: input, size: 10, standardize: true }
+    const query = `?query=${input}`
+    const url = QP_URL_ROOT + 'suggest' + query
 
     try {
       const response = await fetch(url, {
-        method: 'POST',
-        headers: this.headers,
-        body: JSON.stringify(data)
+        method: 'GET',
+        headers: this.headers
       })
 
       const json = await response.json()
