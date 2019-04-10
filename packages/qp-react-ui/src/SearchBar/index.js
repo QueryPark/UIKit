@@ -74,7 +74,7 @@ class SearchBar extends Component {
   }
 
   async getWells (input) {
-    const query = `?query=${input}`
+    const query = `?query=${input.replace(/-|\/|\\|\s/g, '')}`
     const url = QP_URL_ROOT + 'suggest' + query
 
     try {
