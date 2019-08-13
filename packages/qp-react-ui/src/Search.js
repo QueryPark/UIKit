@@ -12,7 +12,7 @@ import {
   Footer
 } from './components/index'
 
-import SearchBar from './SearchBar/index'
+import SearchBar from './SearchBar'
 
 class Search extends Component {
   constructor () {

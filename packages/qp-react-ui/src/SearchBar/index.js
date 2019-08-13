@@ -129,21 +129,17 @@ class SearchBar extends Component {
           }}
           styles={{
             menu: (base, style) => ({
-              margin: '5px 0 0'
+              margin: '4px 0 0'
             })
           }}
-
           backspaceRemovesValue={false}
-
           onInputChange={(val, action) => {
             if (action.action === 'input-blur') {
               this.props.updateFooter(<p />)
             }
           }}
-
           getOptionLabel={(option) => option.primaryHeader.value}
           getOptionValue={(option) => option.uuid}
-
           cacheOptions
           loadOptions={this.getWells}
           onChange={this.onChange}
