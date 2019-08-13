@@ -128,6 +128,9 @@ class SearchBar extends Component {
             Option: SearchOption
           }}
           styles={{
+            container: (base, style) => ({
+              margin: '0'
+            }),
             menu: (base, style) => ({
               margin: '4px 0 0'
             })

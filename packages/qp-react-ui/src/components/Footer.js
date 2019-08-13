@@ -9,17 +9,12 @@ import { css } from 'emotion'
 import { COLORS } from '../theme'
 
 const style = css`
-  height: 30px;
-
-  padding: 10px;
-
+  padding: 16px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: ${COLORS.GREY7};
-
   color: ${COLORS.GREY3};
   font-size: 12px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;

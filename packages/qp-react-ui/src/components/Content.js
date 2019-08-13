@@ -8,6 +8,7 @@ import { css } from 'emotion'
 
 const style = css`
   display: relative;
+  padding: 16px;
 `
 
 const Content = ({ children }) => (
