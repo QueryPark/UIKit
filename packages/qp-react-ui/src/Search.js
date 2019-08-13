@@ -31,21 +31,12 @@ class Search extends Component {
   }
 
   render () {
-    const {
-      API_KEY,
-      onWellSelect
-    } = this.props
-
-    const {
-      header,
-      footer
-    } = this.state
+    const { API_KEY, onWellSelect } = this.props
+    const { header, footer } = this.state
 
     return (
       <Container>
-        <Header>
-          { header }
-        </Header>
+        <Header>{ header }</Header>
         <Content>
           <SearchBar
             API_KEY={API_KEY}
@@ -54,9 +45,7 @@ class Search extends Component {
             updateFooter={this.updateState('footer')}
           />
         </Content>
-        <Footer>
-          { footer }
-        </Footer>
+        <Footer>{ footer }</Footer>
       </Container>
     )
   }

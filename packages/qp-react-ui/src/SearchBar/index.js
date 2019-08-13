@@ -2,7 +2,7 @@
 
 // This component handles searching
 
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 import { assign } from 'lodash'
@@ -17,6 +17,10 @@ import {
 
 const { fetch, Headers } = window
 const QP_URL_ROOT = 'https://api.querypark.com/v1/'
+const style = {
+  container: (_base, _style) => ({ margin: '0' }),
+  menu: (_base, _style) => ({ margin: '4px 0 0' })
+}
 
 const createNewHeaders = (apiKey) => new Headers({
   'Content-Type': 'application/json',
@@ -40,6 +44,7 @@ class SearchBar extends Component {
     this.getWells = this.getWells.bind(this)
     this.reset = this.reset.bind(this)
     this.chosenWellHeader = this.chosenWellHeader.bind(this)
+    this.onInputChange = this.onInputChange.bind(this)
   }
 
   reset () {
@@ -99,57 +104,32 @@ class SearchBar extends Component {
     }
   }
 
+  onInputChange (val, action) {
+    if (action.action === 'input-blur') {
+      this.props.updateFooter(<p />)
+    }
+  }
+
   render () {
     const { well, showDetails } = this.state
-    // Debouncing the getWells function prevents the api from sending queries
-    // every key press. For example, a typical user will type more than 2-3
-    // characters before the search is even relevant, so we avoid wasting
-    // credits on intermediate searches
-    // const loadOptions = debounce(this.getWells, 150)
-    if (well.uuid) {
-      return (
-        <Fragment>
-          {
-            showDetails
-              ? <ChosenWell.Details well={well} />
-              : <ChosenWell well={well} />
-          }
-        </Fragment>
-      )
-    } else {
-      const searchStyle = css`
-        margin: 10px;
-      `
 
-      return (
-        <AsyncSelect
-          className={searchStyle}
-          components={{
-            Option: SearchOption
-          }}
-          styles={{
-            container: (base, style) => ({
-              margin: '0'
-            }),
-            menu: (base, style) => ({
-              margin: '4px 0 0'
-            })
-          }}
-          backspaceRemovesValue={false}
-          onInputChange={(val, action) => {
-            if (action.action === 'input-blur') {
-              this.props.updateFooter(<p />)
-            }
-          }}
-          getOptionLabel={(option) => option.primaryHeader.value}
-          getOptionValue={(option) => option.uuid}
-          cacheOptions
-          loadOptions={this.getWells}
-          onChange={this.onChange}
-          // remove filtering (this is already done by the api)
-          filterOption={null}
-        />
-      )
+    if (well.uuid) {
+      return showDetails
+        ? <ChosenWell.Details well={well} />
+        : <ChosenWell well={well} />
+    } else {
+      const searchStyle = css`margin: 10px;`
+
+      return <AsyncSelect cacheOptions
+        className={searchStyle}
+        components={{ Option: SearchOption }}
+        styles={style}
+        filterOption={null}
+        getOptionLabel={(option) => option.primaryHeader.value}
+        getOptionValue={(option) => option.uuid}
+        loadOptions={this.getWells}
+        onChange={this.onChange}
+        onInputChange={this.onInputChange} />
     }
   }
 }
