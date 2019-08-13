@@ -1,5 +1,3 @@
-/* global API_KEY */
-
 import React, { Component } from 'react'
 import { css } from 'emotion'
 
@@ -9,16 +7,14 @@ import Logo from './assets/Logo.png'
 
 const style = css`
   & > header {
-    position: absolute;
-    top: 0;
-    width: calc(100% - 30px);
-    padding: 0 15px;
+    width: 100%;
     background-color: #091d28;
-    height: 85px;
+    padding: 16px 0;
+    margin-bottom: 32px;
     color: white;
     display: flex;
     justify-content: center;
-    
+
     & > div {
       width: 100%;
       max-width: 500px;
@@ -34,11 +30,7 @@ const style = css`
   }
 
   & > main {
-    position: absolute;
     width: 100%;
-    height: calc(100% - 85px);
-    top: 85px;
-
     box-sizing: border-box;
     padding: 0 10px;
 
@@ -64,33 +56,8 @@ const style = css`
   }
 `
 
-console.log(API_KEY)
-
 class App extends Component {
-  constructor () {
-    super()
-
-    // If in development, the API_KEY may be supplied from a .env file
-    // in qp-react-ui/.env
-    // API_KEY=API_KEY. If in production, API_KEY is set to ''
-
-    // This allows devs to skip copy pasting a key into the box every reload.
-    this.state = { API_KEY }
-    this.updateKey = this.updateKey.bind(this)
-  }
-
-  updateKey (event) {
-    const key = event.target.value
-    this.setState({ API_KEY: key })
-  }
-
   render () {
-    const { API_KEY } = this.state
-
-    const search = API_KEY
-      ? <Search API_KEY={API_KEY} />
-      : null
-
     return (
       <div className={style}>
         <header>
@@ -101,11 +68,7 @@ class App extends Component {
         </header>
         <main>
           <section>
-            <p>Enter Your API Key:</p>
-            <input type='text' onChange={this.updateKey} />
-          </section>
-          <section>
-            { search }
+            <Search API_KEY='None' />
           </section>
         </main>
       </div>
