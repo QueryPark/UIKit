@@ -2,6 +2,10 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import uglify from 'rollup-plugin-uglify-es'
+import postcss from 'rollup-plugin-postcss-modules'
+
+import autoprefixer from 'autoprefixer'
+
 import pkg from './package.json'
 
 const name = 'UIKit'
@@ -54,9 +58,12 @@ export default [
       format: 'es'
     },
     external,
-    plugins: [babel(babelOptions())]
+    plugins: [
+      babel(babelOptions()),
+      resolve(),
+      postcss({ plugins: [autoprefixer()] })
+    ]
   },
-
   {
     input: 'src/index.js',
     output: {
@@ -66,9 +73,13 @@ export default [
       globals
     },
     external,
-    plugins: [babel(babelOptions()), resolve(), commonjs()]
+    plugins: [
+      babel(babelOptions()),
+      resolve(),
+      postcss({ plugins: [autoprefixer()] }),
+      commonjs()
+    ]
   },
-
   {
     input: 'src/index.js',
     output: {
@@ -78,6 +89,12 @@ export default [
       globals
     },
     external,
-    plugins: [babel(babelOptions()), resolve(), commonjs(), uglify()]
+    plugins: [
+      babel(babelOptions()),
+      resolve(),
+      postcss({ plugins: [autoprefixer()] }),
+      commonjs(),
+      uglify()
+    ]
   }
 ]

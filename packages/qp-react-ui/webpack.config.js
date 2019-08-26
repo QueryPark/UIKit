@@ -43,6 +43,23 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              import: true,
+              modules: {
+                localIdentName: process.env.NODE_ENV === 'production'
+                  ? '[hash:base64]'
+                  : '[path][name]__[local]--[hash:base64:5]'
+              }
+            }
+          }
+        ]
       }
     ]
   },
