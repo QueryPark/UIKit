@@ -9,10 +9,11 @@ import {
   Container,
   Header,
   Content,
-  Footer
-} from './components/index'
+  Footer,
+  SearchBar
+} from './components'
 
-import SearchBar from './SearchBar/index'
+import Styles from './index.module.css'
 
 class Search extends Component {
   constructor () {
@@ -35,8 +36,10 @@ class Search extends Component {
     const { header, footer } = this.state
 
     return (
-      <Container>
-        <Header>{ header }</Header>
+      <Container className={Styles.Search}>
+        <Header>
+          { header }
+        </Header>
         <Content>
           <SearchBar
             API_KEY={API_KEY}
