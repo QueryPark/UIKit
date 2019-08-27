@@ -6,14 +6,17 @@ import Footer from './Footer'
 import Button from './Button'
 import Field from './Field'
 import Pill from './Pill'
+import SearchBar from './SearchBar'
+import ErrorDisplay from './ErrorDisplay'
 
 export {
   Container,
   Header,
   Content,
   Footer,
-
   Button,
   Field,
-  Pill
+  Pill,
+  SearchBar,
+  ErrorDisplay
 }

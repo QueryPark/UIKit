@@ -1,4 +1,4 @@
-import Pillbox from './Pillbox'
+import Pillbox from './PillBox'
 import SearchOption from './SearchOption'
 import ChosenWell from './ChosenWell'
 import WellsFound from './WellsFound'
