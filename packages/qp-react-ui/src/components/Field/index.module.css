@@ -1,3 +1,8 @@
+.Container {
+  /* Enables shrinking for ellipsis */
+  min-width: 0;
+}
+
 .Label {
   margin: 0 0 5px;
   padding: 0;
@@ -42,4 +47,10 @@
 .Emphasis {
   color: rgba(0, 0, 0, 0.8);
   font-weight: 500;
+}
+
+.Ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

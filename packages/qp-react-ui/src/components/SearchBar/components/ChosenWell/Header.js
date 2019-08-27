@@ -11,6 +11,7 @@ const Header = ({ well, clickDetails, showDetails }) => {
 
   return <>
     <Field large
+      valueEllipsis
       labelEmphasis
       valueEmphasis
       label={primaryHeader.label}
