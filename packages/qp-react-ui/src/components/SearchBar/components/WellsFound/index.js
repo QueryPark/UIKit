@@ -4,22 +4,17 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from 'emotion'
 
-const style = css`
-  font-weight: 500;
-`
+import Style from './index.module.css'
 
 const WellsFound = ({
   json: { payload: {
     wells: { length },
     queryTime
   } }
-}) => (
-  <p className={style}>
-    {`${length} wells found in ${queryTime / 1000} seconds.`}
-  </p>
-)
+}) => <p className={Style.WellsFound}>
+  {`${length} wells found in ${queryTime / 1000} seconds.`}
+</p>
 
 WellsFound.propTypes = {
   json: PropTypes.object.isRequired
