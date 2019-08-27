@@ -4,18 +4,13 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from 'emotion'
 
-const style = css`
-  display: relative;
-  padding: 16px;
-`
+import Style from './index.module.css'
 
-const Content = ({ children }) => (
-  <div className={style}>
+const Content = ({ children }) =>
+  <div className={Style.Container}>
     { children }
   </div>
-)
 
 Content.propTypes = {
   children: PropTypes.object
