@@ -1,7 +1,5 @@
 {
   "plugins": [
-    "lodash",
-    "emotion",
     "@babel/plugin-proposal-object-rest-spread"
   ],
   "presets": [
