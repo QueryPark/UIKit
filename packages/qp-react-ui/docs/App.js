@@ -1,3 +1,5 @@
+/* global API_KEY */
+
 import React, { Component } from 'react'
 
 import { Search } from 'qp-react-ui'
