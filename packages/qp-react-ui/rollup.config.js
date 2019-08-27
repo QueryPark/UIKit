@@ -98,7 +98,7 @@ export default [
         plugins: [ autoprefixer() ]
       }),
       replace({ 'process.env.NODE_ENV': JSON.stringify(env) }),
-      terser()
+      terser({ mangle: { reserved: ['Error', 'TimeoutError'] } })
     ]
   }
 ]
