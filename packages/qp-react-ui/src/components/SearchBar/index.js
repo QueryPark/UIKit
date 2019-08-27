@@ -16,10 +16,6 @@ const { Headers } = window
 const fetch = FetchWithTimeout(window.fetch)
 
 const QP_URL_ROOT = 'https://api.querypark.com/v1/'
-const style = {
-  container: (_base, _style) => ({ margin: '0' }),
-  menu: (_base, _style) => ({ margin: '4px 0 0' })
-}
 
 const createNewHeaders = (apiKey) => new Headers({
   'Content-Type': 'application/json',
