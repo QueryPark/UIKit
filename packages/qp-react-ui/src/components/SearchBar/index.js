@@ -97,7 +97,7 @@ class SearchBar extends Component {
       const response = await fetch(url, {
         method: 'GET',
         headers: this.headers
-      }, 2500)
+      }, this.props.timeout)
 
       const json = await response.json()
 
@@ -153,9 +153,14 @@ class SearchBar extends Component {
 SearchBar.propTypes = {
   API_KEY: PropTypes.string.isRequired,
   onWellSelect: PropTypes.func,
+  timeout: PropTypes.number,
 
   updateHeader: PropTypes.func.isRequired,
   updateFooter: PropTypes.func.isRequired
+}
+
+SearchBar.defaultProps = {
+  timeout: 2500
 }
 
 export default SearchBar
