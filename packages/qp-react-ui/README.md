@@ -1,31 +1,63 @@
 # QP React UI Kit
 
-Installation:
+## Installation
+
+Peer dependencies and component library:
 
 ```bash
-npm i --save qp-react-ui
+npm i react react-dom qp-react-ui
 ```
 
 or
 
 ```bash
-yard add qp-react-ui
+yarn add react react-dom qp-react-ui
 ```
 
-# Components
+## Components
 
-## Search
+### Search
 
-### Usage
+#### Usage
+
+Use in jsx:
 
 ```jsx
 import React from 'react'
 import { Search } from 'qp-react-ui'
 
+const handleWellSelect = (chosenWell) => console.log(chosenWell)
+
 const App = () => (
-  <Search
-    API_KEY='' // string
-    onWellSelect={(chosenWell) => { console.log(chosenWell) }}
-  />
+  <Search API_KEY=''
+    onWellSelect={handleWellSelect} />
 )
+```
+
+Use in html:
+
+```html
+<html>
+<head>
+  ...
+  <!-- react CDN -->
+  <!-- react-dom CDN -->
+
+  <!-- qp-react-ui taken from node_modules/qp-react-ui/dist -->
+  <script src="./qp-react-ui.min.js"></script>
+</head>
+<body>
+  ...
+  <div id="search-component"></div>
+  <script>
+    ReactDOM.render(
+      React.createElement(UIKit.Search, {
+        API_KEY: 'your-api-key',
+        onWellSelect: () => { /* Your select handler*/ }
+      }),
+      document.getElementById('search-component')
+    )
+  </script>
+</body>
+</html>
 ```
