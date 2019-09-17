@@ -1,6 +1,6 @@
 {
   "name": "qp-react-ui",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "Query Park UI Components for React",
   "keywords": [
     "Component",
@@ -28,7 +28,6 @@
   "scripts": {
     "build": "nps build && bundlesize",
     "build-docs": "nps build.docs",
-    "watch": "nps build.watch",
     "lint": "eslint ./src ./docs",
     "deploy": "cross-env NODE_ENV=production nps publish",
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress",
