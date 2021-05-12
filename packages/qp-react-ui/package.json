@@ -75,7 +75,7 @@
     "lodash": "^4.17.15",
     "nps": "^5.9.3",
     "nps-utils": "^1.7.0",
-    "postcss": "^7.0.17",
+    "postcss": "^8.2.10",
     "postcss-modules": "^1.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.5.2",
